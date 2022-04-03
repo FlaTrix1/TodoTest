@@ -1,7 +1,3 @@
-# Read me
-
-
-
 ## Installation
 
 Recommended [Node.js](https://nodejs.org/) v14 to run.
