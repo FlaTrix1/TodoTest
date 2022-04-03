@@ -1,0 +1,70 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQ5NjE4ZjY4ZjhiYjVmY2MwNzM0ZjciLCJpYXQiOjE2NDg5NzYyNzgsImV4cCI6MTY0ODk4NzA3OH0.4ch-xFIFXR5OXDXS8vFHyxTmwwOe7zZZqSZeDQ54iuU
+
+# User registation
+
+POST http://localhost:8000/auth/register
+content-type: application/json
+
+{
+  "email": "user@test.com"
+  "password": "password123"
+}
+
+# User login
+
+POST http://localhost:8000/auth/login
+content-type: application/json
+
+{
+  "email": "user@test.com"
+  "password": "password123"
+}
+
+# Create ToDo list
+
+POST http://localhost:8000/list
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+    "title": "This is great list"
+}
+
+# Create ToDo
+
+POST http://localhost:8000/list/62495be23052321f7c104dbb/todo
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+    "title": "1st todo item",
+    "description": "This is great description",
+    "deadline": "2022-12-24"
+}
+
+# Get ToDo list
+
+GET http://localhost:8000/list/62495be23052321f7c104dbb
+content-type: application/json
+
+# Invite to ToDo list
+
+POST http://localhost:8000/list/62495be23052321f7c104dbb/invite
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+    "user": "6249618f68f8bb5fcc0734f7"
+}
+
+# Set ToDo state
+# state: planned | active | resolved | canceled
+
+PUT http://localhost:8000/list/62495be23052321f7c104dbb/todo/62495fa6869f8c47985e7aae
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+  "state": "planned"
+}
+
